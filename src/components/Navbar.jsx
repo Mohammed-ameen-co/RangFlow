@@ -1,56 +1,60 @@
-import React from "react";
+// src/components/Navbar.jsx
+
+import React, { useContext } from "react";
 import { FaPlus } from "react-icons/fa";
 import { IoNotificationsOutline } from "react-icons/io5";
-import { FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { useTaskContext } from "../context/TaskContext";
 import appLogo from "../assets/app_logo.png";
+import ProfileDropdown from "./ProfileDropdown";
+import Searchbar from "./Searchbar"; 
 
 export default function Navbar() {
-  return (
-    <nav className="fixed top-0 left-0 right-0 h-16 bg-white shadow-md flex items-center justify-between px-6 z-40">
-      {/* Left: Logo + App Name */}
-      <div className="flex items-center space-x-3">
-        <img src={appLogo} alt="Logo" className="h-8 w-8" />
-        <span className="font-semibold text-xl text-gray-800">Task Manager</span>
-      </div>
+  const { token } = useContext(AuthContext);
+  const { open } = useTaskContext();
 
-      {/* Middle: Search Bar */}
-      <div className="flex-1 max-w-lg mx-6">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="w-full border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
+  return (
+    <nav
+      className={`fixed top-0 bg-gray-900 shadow-xl flex items-center justify-between px-4 sm:px-6 z-40 transition-all duration-500 ease-in-out h-16
+        ${token ? (open ? "left-64 md:left-64 w-[calc(100%-16rem)]" : "left-20 md:left-20 w-[calc(100%-5rem)]") : "left-0 w-full"}`}
+    >
+      <div className="flex items-center space-x-3">
+        <img src={appLogo} alt="Logo" className=" w-25" />
+{/*         <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4 md:mb-0">RangFlow</span> */}
+      </div>
+      
+      {token && <Searchbar />}
 
-      {/* Right: Add Task, Notifications, Profile */}
-      <div className="flex items-center space-x-5">
-        <Link to={"/addtask"}>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-blue-700 transition">
-          <FaPlus />
-          <span className="font-medium">Add Task</span>
-        </button>
-        </Link>
-
-        <button className="text-gray-600 hover:text-gray-900 transition">
-          <IoNotificationsOutline size={24} />
-        </button>
-
-        <div className="relative group">
-          <FaUserCircle size={28} className="text-gray-600 cursor-pointer" />
-          {/* Dropdown Menu */}
-          <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-opacity duration-300 z-50">
-            <ul className="text-sm">
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Settings</li>
-              <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Logout</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
+      <div className="flex items-center space-x-2 sm:space-x-5">
+        {token ? (
+          <>
+            <Link to="/addtask" className="hidden sm:block">
+              <button className="bg-purple-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-purple-700 transition">
+                <FaPlus />
+                <span className="font-medium">Add Task</span>
+              </button>
+            </Link>
+            <Link to="/addtask" className="sm:hidden text-gray-400 hover:text-white transition">
+              <FaPlus size={24} />
+            </Link>
+            <button className="text-gray-400 hover:text-white transition">
+              <IoNotificationsOutline size={24} />
+            </button>
+            <ProfileDropdown /> 
+          </>
+        ) : (
+          <div className="flex space-x-2 sm:space-x-4">
+            <Link to="/login" className="bg-purple-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+              Login
+            </Link>
+            <Link to="/register" className="border border-purple-600 text-purple-600 px-3 sm:px-4 py-2 rounded-lg hover:bg-purple-50 transition">
+              Register
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
 }
-
 
