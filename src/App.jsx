@@ -27,7 +27,7 @@ import TaskPool from "./pages/TaskPool";
 import MyTasks from "./pages/MyTasks";
 import SettingsPage from "./pages/SettingsPage";
 import CreateTeam from "./pages/CreateTeam";
-import ForgotPassword from "./pages/Forgotpassword";
+import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassowrd";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
