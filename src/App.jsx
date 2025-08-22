@@ -8,7 +8,7 @@ import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
-import VerifyEmail from "./pages/verify";
+import VerifyEmail from "./pages/Verify";
 import Sidebar from "./components/Sidebar";
 import TaskForm from "./components/TaskForm";
 import CardDetail from "./pages/CardDetail";
@@ -76,7 +76,7 @@ export default function App() {
                 }
               />
 
-              {/* ... बाकी के रूट्स */}
+              
               <Route
                 path="/dashboard"
                 element={
