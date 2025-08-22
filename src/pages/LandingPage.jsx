@@ -5,6 +5,9 @@ import { IoLogoGithub } from "react-icons/io";
 import { FaUsers, FaUser } from 'react-icons/fa';
 import Typewriter from '../components/Typewriter';
 import { Link } from "react-router-dom";
+import clock from "../assets/clock.png"
+import paper from "../assets/paper.png"
+import rocket from "../assets/rocket.png"
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -92,17 +95,17 @@ export default function LandingPage() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           <div className="p-8 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 hover:bg-gray-700 transition-colors duration-300">
-            <div className="text-5xl mb-4 text-purple-400">📝</div>
+            <div className="text-5xl mb-4 text-purple-400"><img src={paper} alt="paper" className="w-10 invert-100"/></div>
             <h4 className="font-bold text-2xl mb-3 text-white">Visual Task Boards</h4>
             <p className="text-gray-400">Organize and prioritize your work with custom boards. Drag and drop tasks to visualize progress instantly.</p>
           </div>
           <div className="p-8 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 hover:bg-gray-700 transition-colors duration-300">
-            <div className="text-5xl mb-4 text-pink-400">⏰</div>
+            <div className="text-5xl mb-4 text-pink-400"><img src={clock} alt="clock" className="w-10 invert-100"/></div>
             <h4 className="font-bold text-2xl mb-3 text-white">Deadline Tracking</h4>
             <p className="text-gray-400">Never miss a deadline. Set due dates, get reminders, and keep your projects on schedule effortlessly.</p>
           </div>
           <div className="p-8 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 hover:bg-gray-700 transition-colors duration-300">
-            <div className="text-5xl mb-4 text-blue-400">🚀</div>
+            <div className="text-5xl mb-4 text-blue-400"><img src={rocket} alt="rocket" className="w-10 invert-100"/></div>
             <h4 className="font-bold text-2xl mb-3 text-white">Seamless Collaboration</h4>
             <p className="text-gray-400">Invite team members to work on boards together. Real-time updates ensure everyone stays in sync.</p>
           </div>
