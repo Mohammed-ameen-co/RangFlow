@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 export default function VerifyEmail() {
   const [searchParams] = useSearchParams();
@@ -15,20 +16,20 @@ export default function VerifyEmail() {
       return;
     }
 
-    fetch(`http://localhost:5000/api/auth/verify-email?token=${token}`)
+    fetch(`${API_URL}/auth/verify-email?token=${token}`)
       .then(res => res.json())
       .then(data => {
         setLoading(false);
         if (data.success) {
-          setMessage("✅ Email verified! Redirecting to login...");
+          setMessage("Email verified! Redirecting to login...");
           setTimeout(() => navigate("/login"), 2000);
         } else {
-          setMessage(data.message || "❌ Verification failed.");
+          setMessage(data.message || " Verification failed.");
         }
       })
       .catch(() => {
         setLoading(false);
-        setMessage("❌ Something went wrong during verification.");
+        setMessage(" Something went wrong during verification.");
       });
   }, [searchParams, navigate]);
 

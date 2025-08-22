@@ -3,6 +3,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
+import { API_URL } from "../config";
 
 export default function Login() {
   const { login } = useContext(AuthContext);
@@ -13,7 +14,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/auth/login", {
+    const res = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -50,7 +51,7 @@ export default function Login() {
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
           
-          {/* ✅ यह है वह नया कोड जो आपको जोड़ना है */}
+         
           <div className="flex justify-end text-sm">
             <Link to="/forgot-password" className="text-indigo-600 hover:underline">
               Forgot Password?

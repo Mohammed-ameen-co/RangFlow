@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import axios from "axios";
+import { API_URL } from "../config";
 
 export default function TeamsPage() {
   const { token } = useContext(AuthContext);
@@ -48,7 +49,7 @@ export default function TeamsPage() {
     setCreating(true);
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/teams",
+        `${API_URL}/teams`,
         { name, description },
         { headers: { Authorization: `Bearer ${token}` } }
       );

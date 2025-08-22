@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
@@ -17,7 +18,7 @@ const ResetPassword = () => {
     console.log("Resetting password with token:", token);
     console.log("New password:", password);
     try {
-      await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`, { password: password });
+      await axios.post(`${API_URL}/auth/reset-password/${token}`, { password: password });
       toast.success("Password updated successfully! You can now log in.");
       navigate("/login");
     } catch (error) {

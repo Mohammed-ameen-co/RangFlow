@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -14,7 +15,7 @@ const ForgotPassword = () => {
     setLoading(true);
     console.log("Submitting forgot password request for email:", email);
     try {
-      await axios.post("http://localhost:5000/api/auth/forgot-password", { email });
+      await axios.post(`${API_URL}/auth/forgot-password`, { email });
       toast.success("Password reset link sent! Check your inbox.");
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong.");
