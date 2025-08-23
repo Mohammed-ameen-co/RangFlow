@@ -11,7 +11,7 @@ const TermsOfService = () => {
       <div className="text-left">
         <h2 className="text-xl font-bold mb-4">AGREEMENT TO OUR LEGAL TERMS</h2>
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
-          We are RangFlow ('Company', 'we', 'us', or 'our'), a company registered in India at Bhilwara, Rajasthan, Bhilwara, Rajasthan 311001. We operate the website <a href="http://www.rangflow.com" target="_blank" className="text-blue-600 hover:underline">http://www.rangflow.com</a> (the 'Site') as well as any other related products and services that refer or link to these legal terms (the 'Legal Terms') (collectively, the 'Services').
+          We are RangFlow ('Company', 'we', 'us', or 'our'), a company registered in India at Bhilwara, Rajasthan, Bhilwara, Rajasthan 311001. We operate the website <a href="https://rang-flow.vercel.app/" target="_blank" className="text-blue-600 hover:underline">https://rang-flow.vercel.app/</a> (the 'Site') as well as any other related products and services that refer or link to these legal terms (the 'Legal Terms') (collectively, the 'Services').
         </p>
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
           RangFlow is an online platform that helps teams and individual users with project collaboration, note management, and increasing productivity.
