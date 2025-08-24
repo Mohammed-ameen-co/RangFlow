@@ -39,7 +39,9 @@ export default function TeamDashboard() {
     setLoading(true);
     try {
       const teamResponse = await api.get(`/teams/${user.team._id}`);
-      const teamData = teamResponse.data.team;
+//       const teamData = teamResponse.data.team;
+//change this line
+      const teamData = teamResponse.data?.team || {};
       
       setTeamMembers(teamData.members);
       setPendingInvitations(teamData.invitations.filter(inv => !inv.accepted));
@@ -59,7 +61,9 @@ export default function TeamDashboard() {
   const fetchTeamTasks = async () => {
     try {
       const response = await api.get(`/teams/${user.team._id}/tasks`);
-      const tasks = response.data.tasks;
+        //const tasks = response.data.tasks;
+       //change this line
+        const tasks = response.data?.tasks || [];
       const overview = tasks.reduce(
         (acc, task) => {
           acc[task.category] = (acc[task.category] || 0) + 1;
