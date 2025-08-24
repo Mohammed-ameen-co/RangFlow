@@ -43,8 +43,8 @@ export default function TeamDashboard() {
 //change this line
       const teamData = teamResponse.data?.team || {};
       
-      setTeamMembers(teamData.members);
-      setPendingInvitations(teamData.invitations.filter(inv => !inv.accepted));
+      setTeamMembers(teamData.members || []);// safe default add
+      setPendingInvitations((teamData.invitations || []).filter(inv => !inv.accepted));// safe default add
 
       if (user.role === 'Owner' || user.role === 'Admin') {
         const inviteCodeResponse = await api.get(`/teams/${user.team._id}/invite-code`);
@@ -357,7 +357,7 @@ export default function TeamDashboard() {
               className="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               <option value="">Unassigned</option>
-              {teamMembers.map((member) => (
+              {(teamMembers || []).map((member) => (
                 <option key={member._id} value={member._id}>
                   {member.name}
                 </option>
@@ -422,7 +422,7 @@ export default function TeamDashboard() {
                 <FaEnvelope /> Pending Invitations
               </h2>
               <ul className="space-y-3">
-                {pendingInvitations.map((invitation) => (
+                {(pendingInvitations || []).map((invitation) => (
                   <li key={invitation.email} className="flex items-center justify-between bg-gray-700 p-3 rounded-md">
                     <span className="text-lg">{invitation.email}</span>
                     <button
