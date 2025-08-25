@@ -47,8 +47,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("token", authToken);
     setToken(authToken);
     setLoading(true);
-    await fetchUserProfile(authToken); 
-    navigate('/dashboard');
+    try {
+      await fetchUserProfile(authToken); 
+      navigate('/dashboard');
+    } catch (error) {
+      console.error("Login failed after token set:", error);
+    logout();
+    }
   };
 
   const logout = () => {
