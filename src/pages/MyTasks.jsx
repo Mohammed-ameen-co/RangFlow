@@ -23,7 +23,7 @@ export default function MyTasks() {
       setLoading(true);
       try {
         const response = await api.get('/tasks/my-tasks');
-        setMyTasks(response.data || []);//passing empty array
+        setMyTasks(response.data?.tasks || []);//passing empty array
       } catch (error) {
         toast.error("Failed to fetch your tasks.");
         console.error("Error fetching user tasks:", error);
