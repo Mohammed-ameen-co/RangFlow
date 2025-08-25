@@ -19,7 +19,7 @@ const TaskPool = () => {
       setLoading(true);
       try {
         const res = await api.get(`/tasks/team-tasks/${user.team._id}`);
-        setTasks(res.data);
+        setTasks(res.data || []);//passing empty array
       } catch (error) {
         toast.error("Failed to fetch tasks.");
         console.error("Error fetching team tasks:", error);

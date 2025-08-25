@@ -230,7 +230,7 @@ export default function TeamDashboard() {
     );
   }
 
-  if (!user || !user.team) {
+  if (!user || !user.team || teamMembers.length === 0) {
     return (
       <div className="flex items-center justify-center h-screen bg-gray-900 text-white">
         <p className="text-xl">You are not part of a team. Create or join a team to access this dashboard.</p>
